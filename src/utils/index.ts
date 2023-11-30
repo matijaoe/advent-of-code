@@ -47,13 +47,14 @@ export const validateDay = (day: number | string) => {
   return day && !Number.isNaN(parsedDay) && isBetween(parsedDay, [1, 25])
 }
 
-export const generateTemplate = (day: number) => `import { readInput } from 'io'
+export const generateTemplate = (day: number) => `import { parseLines, readInput } from 'io'
 
 const input = await readInput('${formatDayName(day)}')
 
 export const part1 = () => {
-  // TODO: crush it
-  return input.length
+  const lines = parseLines(input)
+  // your code goes here
+  return lines.length
 }
 `
 
