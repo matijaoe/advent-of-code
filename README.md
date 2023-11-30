@@ -1,20 +1,61 @@
 # Advent of Code 2023
 
-Install dependencies:
+- **Bun & TypeScript**, with ESLint
+- Automatic day setup, with all the necessary files and puzzle input
+- Performance metrics
 
+Install dependencies:
 ```bash
+# ensure bun is installed:
+# curl -fsSL https://bun.sh/install | bash
+
 bun install
 ```
 
-Set up a new day
+Set up a new day:
 ```bash
 bun setup 1
 ```
 
-Run day
+Run day solutions:
 ```bash
 bun day 1
 ```
+
+For automatic puzzle input retrieval, define `.env` file with `session` cookie from [adventofcode.com](https://adventofcode.com)
+```env
+SESSION=
+YEAR=2023
+```
+
+Expected `index.ts` structure
+```ts
+import { parseGroups, parseLines, readInput } from 'io'
+
+const input = await readInput('day-01')
+
+export const part1 = () => {
+  const lines = parseLines(input)
+  // your code goes here
+  return lines.length
+}
+
+export const part2 = () => {
+  const lines = parseGroups(input)
+  // your code goes here
+  return lines.length
+}
+```
+
+`bun day <day-num>` output
+```
+🌲 Part One: 1999 (568.63 µs)
+🎄 Part Two: 255 (284.21 µs)
+```
+
+
+## Days
+✅ / ❌
 
 | Day | Part 1 | Part 2 | Solution                      |
 | --- | ------ | ------ | ----------------------------- |
