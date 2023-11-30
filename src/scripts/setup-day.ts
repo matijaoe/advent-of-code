@@ -1,24 +1,55 @@
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync } from 'node:fs'
+import { mkdir } from 'node:fs/promises'
 import chalk from 'chalk'
-import { formatDay, genTemplate, validateDay } from 'utils'
+import { formatDay, formatDayName, generateTemplate, isBetween, validateDay } from 'utils'
+import { fetchInput } from './api'
 
-const setupDay = (day: number | string) => {
-  if (validateDay(day)) {
-    console.error(chalk.red('Please specify a day (e.g., \'bun run day 1\')'))
+const setupDay = async (day: number) => {
+  if (!validateDay(day)) {
+    console.log(`🎅 Pick a day between ${chalk.bold(1)} and ${chalk.bold(25)}.`)
+    console.log(`🎅 To get started, try: ${chalk.cyan('bun setup 1')}`)
     return
   }
 
-  const dir = `./src/day-${formatDay(day)}`
+  const dir = new URL(`../${formatDayName(day)}/`, import.meta.url)
+
+  if (existsSync(dir)) {
+    console.log(chalk.red(`Day ${day} already exists!`))
+    return
+  }
+
+  const currentYear = new Date().getFullYear()
+  const year = Number.parseInt(Bun.env.YEAR ?? currentYear.toString())
+
+  if (Number.isNaN(year) || !isBetween(year, [2015, currentYear])) {
+    console.log(
+      chalk.red(
+        `📅 Year must be between ${chalk.bold(2015)} and ${chalk.bold(currentYear)}.`
+      )
+    )
+    return
+  }
+
+  const input = await fetchInput({ day, year }).catch(() => {
+    console.log(
+      chalk.red.bold(
+        '❌ Fetching input failed, empty file will be created.'
+      )
+    )
+  })
+
+  console.log(`📂 Setting up day ${formatDay(day)}...`)
 
   try {
-    mkdirSync(dir)
-    writeFileSync(`${dir}/input.txt`, '')
-    writeFileSync(`${dir}/index.ts`, genTemplate(Number(day)))
-    console.log(chalk.green(`Day ${formatDay(day)} set up successfully!`))
+    await mkdir(dir)
+    await Bun.write(new URL(`input.txt`, dir.href), input ?? '')
+    await Bun.write(new URL(`index.ts`, dir.href), generateTemplate(day))
+
+    console.log(chalk.green(`✅ Day ${formatDay(day)} set up!`))
   } catch (err: any) {
     console.error(chalk.red(err?.message ?? 'Failed to set up day'))
   }
 }
 
-const day = Bun.argv[2]
+const day = Number(Bun.argv[2] ?? '') ?? new Date().getDate()
 setupDay(day)

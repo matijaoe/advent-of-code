@@ -6,14 +6,14 @@ Install dependencies:
 bun install
 ```
 
-Run day
-```bash
-bun run day 1
-```
-
 Set up a new day
 ```bash
-bun run setup 1
+bun setup 1
+```
+
+Run day
+```bash
+bun day 1
 ```
 
 | Day | Part 1 | Part 2 | Solution                      |
