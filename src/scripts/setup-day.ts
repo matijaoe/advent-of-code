@@ -1,7 +1,8 @@
 import { existsSync } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
 import chalk from 'chalk'
-import { formatDay, formatDayName, generateTemplate, isBetween, validateDay } from 'utils'
+import { isBetween } from 'utils'
+import { formatDay, formatDayName, generateTemplate, validateDay } from 'utils/script'
 import { fetchInput } from './api'
 
 const setupDay = async (day: number) => {

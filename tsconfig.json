@@ -11,6 +11,7 @@
     "paths": {
       "io": ["utils/io.ts"],
       "utils": ["utils/index.ts"],
+      "utils/*": ["utils/*"],
       "models": ["models/index.ts"],
       "models/*": ["models/*"]
     },

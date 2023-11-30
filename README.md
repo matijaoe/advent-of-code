@@ -1,7 +1,8 @@
 # Advent of Code 2023
 
 - **Bun & TypeScript**, with ESLint
-- Automatic day setup, with all the necessary files and puzzle input
+- Automatic day setup
+- Puzzle input automatically fetched
 - Performance metrics
 
 Install dependencies:
@@ -28,9 +29,10 @@ SESSION=
 YEAR=2023
 ```
 
-Expected `index.ts` structure
+
+Generated day structure
 ```ts
-import { parseGroups, parseLines, readInput } from 'io'
+import { parseLines, readInput } from 'io'
 
 const input = await readInput('day-01')
 
@@ -39,54 +41,67 @@ export const part1 = () => {
   // your code goes here
   return lines.length
 }
+```
+
+Expected `index.ts` (day 1 of 2022)
+```ts
+import { parseGroups, readInput } from 'io'
+import { desc, sum } from 'utils'
+
+const input = await readInput('day-01')
+
+export const part1 = () => {
+  const lines = parseGroups(input, Number)
+  return lines.map(sum).sort(desc).at(0)
+}
 
 export const part2 = () => {
-  const lines = parseGroups(input)
-  // your code goes here
-  return lines.length
+  const lines = parseGroups(input, Number)
+  const top = lines.map(sum).sort(desc).slice(0, 3)
+  return sum(top)
 }
 ```
 
 `bun day <day-num>` output
 ```
-🌲 Part One: 1999 (568.63 µs)
-🎄 Part Two: 255 (284.21 µs)
+🌲 Part One: 70698 (1.11 ms)
+🎄 Part Two: 140471 (383.5 µs)
 ```
 
 
 ## Days
 ✅ / ❌
 
-| Day | Part 1 | Part 2 | Solution                      |
-| --- | ------ | ------ | ----------------------------- |
-| 01  |        |        | [Link](./src/day-01/index.ts) |
-| 02  |        |        |                               |
-| 03  |        |        |                               |
-| 04  |        |        |                               |
-| 05  |        |        |                               |
-| 06  |        |        |                               |
-| 07  |        |        |                               |
-| 08  |        |        |                               |
-| 09  |        |        |                               |
-| 10  |        |        |                               |
-| 11  |        |        |                               |
-| 12  |        |        |                               |
-| 13  |        |        |                               |
-| 14  |        |        |                               |
-| 15  |        |        |                               |
-| 16  |        |        |                               |
-| 17  |        |        |                               |
-| 18  |        |        |                               |
-| 19  |        |        |                               |
-| 20  |        |        |                               |
-| 21  |        |        |                               |
-| 22  |        |        |                               |
-| 23  |        |        |                               |
-| 24  |        |        |                               |
-| 25  |        |        |                               |
-| 26  |        |        |                               |
-| 27  |        |        |                               |
-| 28  |        |        |                               |
-| 29  |        |        |                               |
-| 30  |        |        |                               |
-| 31  |        |        |                               |
+| Day | Part 1 | Part 2 | Solution                      | Advent of Code link                                   |
+| --- | ------ | ------ | ----------------------------- | ------------------------------------------ |
+| 01  |        |        | [Link](./src/day-01/index.ts) | [Day 01](https://adventofcode.com/2023/day/1) |
+| 02  |        |        |                               | [Day 02](https://adventofcode.com/2023/day/2) |
+| 03  |        |        |                               | [Day 03](https://adventofcode.com/2023/day/3) |
+| 04  |        |        |                               | [Day 04](https://adventofcode.com/2023/day/4) |
+| 05  |        |        |                               | [Day 05](https://adventofcode.com/2023/day/5) |
+| 06  |        |        |                               | [Day 06](https://adventofcode.com/2023/day/6) |
+| 07  |        |        |                               | [Day 07](https://adventofcode.com/2023/day/7) |
+| 08  |        |        |                               | [Day 08](https://adventofcode.com/2023/day/8) |
+| 09  |        |        |                               | [Day 09](https://adventofcode.com/2023/day/9) |
+| 10  |        |        |                               | [Day 10](https://adventofcode.com/2023/day/10) |
+| 11  |        |        |                               | [Day 11](https://adventofcode.com/2023/day/11) |
+| 12  |        |        |                               | [Day 12](https://adventofcode.com/2023/day/12) |
+| 13  |        |        |                               | [Day 13](https://adventofcode.com/2023/day/13) |
+| 14  |        |        |                               | [Day 14](https://adventofcode.com/2023/day/14) |
+| 15  |        |        |                               | [Day 15](https://adventofcode.com/2023/day/15) |
+| 16  |        |        |                               | [Day 16](https://adventofcode.com/2023/day/16) |
+| 17  |        |        |                               | [Day 17](https://adventofcode.com/2023/day/17) |
+| 18  |        |        |                               | [Day 18](https://adventofcode.com/2023/day/18) |
+| 19  |        |        |                               | [Day 19](https://adventofcode.com/2023/day/19) |
+| 20  |        |        |                               | [Day 20](https://adventofcode.com/2023/day/20) |
+| 21  |        |        |                               | [Day 21](https://adventofcode.com/2023/day/21) |
+| 22  |        |        |                               | [Day 22](https://adventofcode.com/2023/day/22) |
+| 23  |        |        |                               | [Day 23](https://adventofcode.com/2023/day/23) |
+| 24  |        |        |                               | [Day 24](https://adventofcode.com/2023/day/24) |
+| 25  |        |        |                               | [Day 25](https://adventofcode.com/2023/day/25) |
+| 26  |        |        |                               | [Day 26](https://adventofcode.com/2023/day/26) |
+| 27  |        |        |                               | [Day 27](https://adventofcode.com/2023/day/27) |
+| 28  |        |        |                               | [Day 28](https://adventofcode.com/2023/day/28) |
+| 29  |        |        |                               | [Day 29](https://adventofcode.com/2023/day/29) |
+| 30  |        |        |                               | [Day 30](https://adventofcode.com/2023/day/30) |
+| 31  |        |        |                               | [Day 31](https://adventofcode.com/2023/day/31) |
