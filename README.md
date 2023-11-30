@@ -5,11 +5,20 @@
 - Puzzle input automatically fetched
 - Performance metrics
 
+## Setup
+
+Download template (powered by [`unjs/giget`](https://github.com/unjs/giget))
+```bash
+npx giget gh:matijaoe/advent-of-code-template advent-of-code-2023
+```
+
+Ensure [`bun`](https://bun.sh/) is installed
+```
+curl -fsSL https://bun.sh/install | bash
+```
+
 Install dependencies:
 ```bash
-# ensure bun is installed:
-# curl -fsSL https://bun.sh/install | bash
-
 bun install
 ```
 
@@ -23,14 +32,15 @@ Run day solutions:
 bun day 1
 ```
 
-For automatic puzzle input retrieval, define `.env` file with `session` cookie from [adventofcode.com](https://adventofcode.com)
+For automatic puzzle input retrieval, define `.env` file with `session` cookie from [adventofcode.com](https://adventofcode.com):
 ```env
 SESSION=
 YEAR=2023
 ```
 
+## Structure
 
-Generated day structure
+Generated day structure:
 ```ts
 import { parseLines, readInput } from 'io'
 
@@ -43,7 +53,7 @@ export const part1 = () => {
 }
 ```
 
-Expected `index.ts` (day 1 of 2022)
+Expected `index.ts` solution structure (day 1 of 2022):
 ```ts
 import { parseGroups, readInput } from 'io'
 import { desc, sum } from 'utils'
@@ -62,7 +72,7 @@ export const part2 = () => {
 }
 ```
 
-`bun day <day-num>` output
+`bun day <day-num>` output:
 ```
 🌲 Part One: 70698 (1.11 ms)
 🎄 Part Two: 140471 (383.5 µs)
