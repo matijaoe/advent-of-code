@@ -1,4 +1,4 @@
-# Advent of Code 2023
+# Advent of Code Template
 
 - **Bun & TypeScript**, with ESLint
 - Automatic day setup
@@ -9,7 +9,7 @@
 
 Download template (powered by [`unjs/giget`](https://github.com/unjs/giget))
 ```bash
-npx giget gh:matijaoe/advent-of-code-template advent-of-code-2023
+npx giget gh:matijaoe/advent-of-code advent-of-code-2023
 ```
 
 Ensure [`bun`](https://bun.sh/) is installed
