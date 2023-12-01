@@ -8,12 +8,15 @@
 ## Setup
 
 Download template (powered by [`unjs/giget`](https://github.com/unjs/giget))
-```bash
+```shell
 npx giget gh:matijaoe/advent-of-code advent-of-code-2023
 ```
 
 Ensure [`bun`](https://bun.sh/) is installed
 ```
+bun -v
+
+# if not installed, run this:
 curl -fsSL https://bun.sh/install | bash
 ```
 
